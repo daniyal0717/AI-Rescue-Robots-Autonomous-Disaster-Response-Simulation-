@@ -18,5 +18,8 @@
     <ClCompile Include="src\container.h">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="tests\test container.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

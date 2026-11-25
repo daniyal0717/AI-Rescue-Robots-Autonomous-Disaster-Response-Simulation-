@@ -26,3 +26,4 @@ rescue_sim
 output/*.csv
 output/*.txt
 !output/.gitkeep
+/src/container.h

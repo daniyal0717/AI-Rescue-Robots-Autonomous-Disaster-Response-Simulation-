@@ -1,0 +1,95 @@
+# =====================================================================
+# AI Rescue Robots - Scenario 1 (Easy, foundation test)
+# Small map used to verify loading, routing, battery rules and the basic request
+# lifecycle by hand. One robot of every capability, one blocked road that is later
+# restored, one road blocked during the run, one charging station outage and one
+# urgency change. No cut-off location.
+# Same format as scenario_provided.txt (see Appendix A of the project brief).
+# =====================================================================
+SCENARIO easy_1
+
+# PARAM <key> <value>
+PARAM max_steps 80
+PARAM speed 1
+PARAM battery_per_cost_unit 1
+PARAM battery_per_work_step 2
+PARAM recharge_per_step 5
+
+LOCATIONS 14
+# <id> <name> <type>
+1 Building_1 BUILDING
+2 Charging_Station_1 CHARGING
+3 Charging_Station_2 CHARGING
+4 Building_2 BUILDING
+5 Building_3 BUILDING
+6 Building_4 BUILDING
+7 Hospital_1 HOSPITAL
+8 Building_5 BUILDING
+9 Building_6 BUILDING
+10 Building_7 BUILDING
+11 Command_Center COMMAND
+12 Hospital_2 HOSPITAL
+13 Junction_1 JUNCTION
+14 Supply_Depot_1 DEPOT
+
+CONNECTIONS 22
+# <id> <location_a> <location_b> <cost> <OPEN|BLOCKED>
+1 1 2 3 OPEN
+2 1 7 5 OPEN
+3 1 9 2 OPEN
+4 1 10 3 OPEN
+5 2 3 7 OPEN
+6 2 4 6 OPEN
+7 2 5 8 OPEN
+8 2 6 3 BLOCKED
+9 2 10 8 OPEN
+10 4 7 9 OPEN
+11 4 12 5 OPEN
+12 6 7 3 OPEN
+13 6 8 9 BLOCKED
+14 6 13 1 OPEN
+15 7 8 2 OPEN
+16 7 9 2 OPEN
+17 7 10 1 OPEN
+18 7 11 6 OPEN
+19 10 12 9 OPEN
+20 10 14 8 OPEN
+21 11 13 2 OPEN
+22 13 14 8 OPEN
+
+ROBOTS 5
+# <id> <start_location> <capability> <max_battery> <initial_battery>
+1 7 MEDICAL 100 100
+2 3 FIRE 120 120
+3 14 SUPPLY 150 90
+4 1 SEARCH 90 90
+5 7 GENERAL 110 77
+
+REQUESTS 12
+# <id> <report_time> <location> <category> <urgency> <duration_steps>
+1 0 4 FIRE 5 6
+2 0 6 SUPPLY 1 3
+3 2 11 MEDICAL 3 5
+4 15 1 FIRE 2 6
+5 17 3 MEDICAL 1 3
+6 21 6 FIRE 1 5
+7 42 4 SEARCH 3 6
+8 42 9 SUPPLY 2 3
+9 42 9 FIRE 3 4
+10 42 12 SUPPLY 3 3
+11 50 4 SEARCH 4 4
+12 51 4 SEARCH 1 6
+
+EVENTS 6
+# <time> <BLOCK|UNBLOCK> <connection_id>
+# <time> <STATION_DOWN|STATION_UP> <location_id>
+# <time> SET_URGENCY <request_id> <new_urgency>
+# <time> <ROBOT_OFFLINE|ROBOT_ONLINE> <robot_id>
+14 UNBLOCK 8
+17 BLOCK 9
+23 STATION_DOWN 3
+45 UNBLOCK 9
+48 SET_URGENCY 6 3
+65 STATION_UP 3
+
+END

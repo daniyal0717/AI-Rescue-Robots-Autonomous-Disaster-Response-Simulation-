@@ -129,7 +129,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\container.h" />
+    <ClCompile Include="src\scenario_loader.cpp" />
     <ClCompile Include="tests\test container.cpp" />
+    <ClCompile Include="tests\test_loader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\scenario_loader.h" />
+    <ClInclude Include="src\types.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
